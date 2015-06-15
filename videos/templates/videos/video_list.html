@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load embed_video_tags %}
+
+{% block title %}Видеозаписи{% endblock %}
+
+{% block body %}
+  {% for video in videos %}
+    <div>
+      <h3>
+        <a href="{% url 'video_detail' pk=video.pk %}">{{ video.title }}</a>
+      </h3>
+      {% video video.url as embed %}
+        <img src="{{ embed.thumbnail }}" alt="">
+      {% endvideo %}
+    </div>
+  {% endfor %}
+{% endblock %}

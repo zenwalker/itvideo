@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}IT Video{% endblock %}
+
+{% block body %}
+  <h1>It works!</h1>
+
+  <nav>
+    <ul>
+      <li><a href="{% url 'video_list' %}">/videos/</a></li>
+    </ul>
+  </nav>
+{% endblock %}

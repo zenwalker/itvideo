@@ -1,0 +1,12 @@
+node_modules
+bower_components
+__pycache__
+media
+.idea
+*.orig
+*.pyc
+*.sqlite3
+*.db
+.DS_Store
+itvideo/settings_local.py
+static/build

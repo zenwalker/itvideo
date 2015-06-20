@@ -4,14 +4,31 @@
 {% block title %}Видеозаписи{% endblock %}
 
 {% block body %}
-  <div class="video-list">
-    {% for video in videos %}
-      {% video video.url as embed %}
-        <div class="video-list_item">
-          <img class="video-list_item_image" src="{{ embed.thumbnail }}" alt="{{ video.title }}">
-          <a class="video-list_item_title" href="{% url 'video_detail' pk=video.pk %}">{{ video.title }}</a>
-        </div>
-      {% endvideo %}
-    {% endfor %}
+  <div class="container">
+    <div class="video-list">
+      {% for video in videos %}
+        {% video video.url as embed %}
+          <div class="video-list_item">
+            <div class="video-list_item_wrapper">
+              <a class="video-list_item_image" href="{% url 'video_detail' pk=video.pk %}">
+                <img src="{{ embed.thumbnail }}" alt="">
+              </a>
+              <div class="video-list_item_info">
+                <a class="video-list_item_title" href="{% url 'video_detail' pk=video.pk %}" title="{{ video.title }}">
+                  <span>{{ video.title }}</span>
+                </a>
+                {% if video.tags %}
+                  <div class="video-list_item_tags">
+                    {% for tag in video.tags.all %}
+                      <a class="video-list_item_tag" href="{% url 'video_list' %}?tags={{ tag.slug }}">{{ tag }}</a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endvideo %}
+      {% endfor %}
+    </div>
   </div>
 {% endblock %}

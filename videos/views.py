@@ -8,6 +8,15 @@ class VideoList(ListView):
     context_object_name = 'videos'
     model = Video
 
+    def get_queryset(self):
+        videos = super().get_queryset()
+        tags = self.request.GET.get('tags')
+
+        if not tags:
+            return videos
+
+        return videos.filter(tags__slug__in=tags.split(','))
+
 
 class VideoDetail(DetailView):
     context_object_name = 'video'

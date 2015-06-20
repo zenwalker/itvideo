@@ -7,6 +7,16 @@
   {% block extrahead %}{% endblock %}
 </head>
 <body class="page">
+  <header class="header">
+    <div class="container header_container">
+      <a class="header_logo" href="{% url 'video_list' %}"><span>IT</span> Video</a>
+
+      <a class="header_add-video" href="{% url 'video_add' %}">
+        <span>Прислать видео</span>
+      </a>
+    </div>
+  </header>
+
   {% block body %}{% endblock %}
 </body>
 </html>

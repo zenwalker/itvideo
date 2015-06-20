@@ -9,4 +9,4 @@ media
 *.db
 .DS_Store
 itvideo/settings_local.py
-static/build
+client/build

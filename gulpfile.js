@@ -3,7 +3,8 @@ var gulp = require('gulp')
   , concat = require('gulp-concat')
   , postcss = require('gulp-postcss')
   , rebaseUrls = require('gulp-css-rebase-urls')
-  , autoprefixer = require('autoprefixer');
+  , autoprefixer = require('autoprefixer')
+  , path = require('path');
 
 
 /**
@@ -13,13 +14,21 @@ var gulp = require('gulp')
 var sources = {
   app: {
     css: [
-      './static_src/components/*.styl'
+      './client/common/reset.styl',
+      './client/components/*.styl'
     ]
   }
 };
 
 var config = {
-  root: './static'
+  root: './static',
+  stylus: {
+    import: [
+      path.join(__dirname, 'client/common/variables'),
+      path.join(__dirname, 'client/common/mixins'),
+      path.join(__dirname, 'client/common/colors')
+    ]
+  }
 };
 
 
@@ -36,5 +45,9 @@ gulp.task('css', function() {
     .pipe(rebaseUrls(config.rebaseUrls))
     .pipe(concat('app.css'))
     .pipe(postcss(processors))
-    .pipe(gulp.dest('./static'));
+    .pipe(gulp.dest('./client/build'));
+});
+
+gulp.task('watch', function() {
+  gulp.watch(sources.app.css, ['css']);
 });

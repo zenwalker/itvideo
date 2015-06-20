@@ -1,0 +1,15 @@
+clearfix()
+  &::after
+    display: table
+    clear: both
+    content: ""
+
+better-fonts()
+  text-rendering: optimizeLegibility
+  font-feature-settings: "kern"
+  font-kerning: normal
+
+  -webkit-font-smoothing: antialiased
+
+rem($value)
+  unit(1 / $font-size * $value, 'rem')

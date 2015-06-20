@@ -19,7 +19,7 @@ class Video(models.Model):
     event = models.ForeignKey(Event, blank=True, null=True)
     description = models.TextField(blank=True)
     year = models.PositiveSmallIntegerField()
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
     url = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
     is_published = models.BooleanField(default=False)

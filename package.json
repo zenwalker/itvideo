@@ -1,0 +1,11 @@
+{
+  "name": "itvideo",
+  "dependencies": {
+    "autoprefixer": "^5.2.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-css-rebase-urls": "0.0.5",
+    "gulp-postcss": "^5.1.8",
+    "gulp-stylus": "^2.0.4"
+  }
+}

@@ -4,14 +4,14 @@
 {% block title %}Видеозаписи{% endblock %}
 
 {% block body %}
-  {% for video in videos %}
-    <div>
-      <h3>
-        <a href="{% url 'video_detail' pk=video.pk %}">{{ video.title }}</a>
-      </h3>
+  <div class="video-list">
+    {% for video in videos %}
       {% video video.url as embed %}
-        <img src="{{ embed.thumbnail }}" alt="">
+        <div class="video-list_item">
+          <img class="video-list_item_image" src="{{ embed.thumbnail }}" alt="{{ video.title }}">
+          <a class="video-list_item_title" href="{% url 'video_detail' pk=video.pk %}">{{ video.title }}</a>
+        </div>
       {% endvideo %}
-    </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
 {% endblock %}

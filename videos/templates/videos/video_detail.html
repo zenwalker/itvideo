@@ -6,6 +6,19 @@
 {% endblock %}
 
 {% block body %}
-  <h1>{{ video.title }}</h1>
-  {% video video.url %}
+  <div class="container">
+    <div class="video">
+      <div class="video_view">
+        {% video video.url %}
+      </div>
+      <div class="video_meta">
+        <h1 class="video_title">{{ video.title }}</h1>
+        <div class="video_tags">
+          {% for tag in video.tags.all %}
+            <a href="{% url 'video_list' %}?tags={{ tag.slug }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
